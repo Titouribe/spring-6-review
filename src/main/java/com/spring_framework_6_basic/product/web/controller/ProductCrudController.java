@@ -5,10 +5,12 @@ import com.spring_framework_6_basic.product.web.dto.ProductDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface ProductCrudController {
 
-    public Page<Product> getAll(@PageableDefault(size = 20) Pageable pageable);
+    Page<Product> getAllByStoreId(@PageableDefault(size = 20) Pageable pageable, @PathVariable(name = "storeId") Long storeId);
 
-    public Product createProduct(ProductDto product);
+    Product createProduct(@RequestBody ProductDto product, @PathVariable(name = "storeId") Long storeId);
 }

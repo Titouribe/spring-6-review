@@ -24,9 +24,10 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(Long id, String name) {
+    public ProductEntity(Long id, String name, StoreEntity store) {
         this.id = id;
         this.name = name;
+        this.store = store;
     }
 
     public Long getId() {
