@@ -1,21 +1,24 @@
-package com.spring_framework_6_basic.product.domain.model;
+package com.spring_framework_6_basic.store.domain.model;
 
-import com.spring_framework_6_basic.store.domain.model.Store;
+import com.spring_framework_6_basic.product.domain.model.Product;
 
 import java.util.Objects;
+import java.util.Set;
 
-public class Product {
+public class Store {
 
     private Long id;
 
     private String name;
 
-    private Store store;
-
-    public Product(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public Store() {
     }
+
+    public Store(Long id) {
+        this.id = id;
+    }
+
+    private Set<Product> products;
 
     public Long getId() {
         return id;
@@ -33,19 +36,19 @@ public class Product {
         this.name = name;
     }
 
-    public Store getStore() {
-        return store;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id);
+        Store store = (Store) o;
+        return Objects.equals(id, store.id);
     }
 
     @Override

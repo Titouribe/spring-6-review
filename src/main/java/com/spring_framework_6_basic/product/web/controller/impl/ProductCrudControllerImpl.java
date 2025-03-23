@@ -11,7 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("products")
+@RequestMapping("stores/{storeId}/products")
 public class ProductCrudControllerImpl implements ProductCrudController {
 
     private final ProductDomainService productDomainService;
@@ -24,14 +24,14 @@ public class ProductCrudControllerImpl implements ProductCrudController {
 
     @Override
     @GetMapping
-    public Page<Product> getAll(@PageableDefault(size = 20) Pageable pageable) {
-        return productDomainService.findAll(pageable);
+    public Page<Product> getAllByStoreId(@PageableDefault(size = 20) Pageable pageable, @PathVariable(name = "storeId") Long storeId) {
+        return productDomainService.findAll(pageable, storeId);
     }
 
     @Override
     @PostMapping
-    public Product createProduct(@RequestBody ProductDto product) {
+    public Product createProduct(@RequestBody ProductDto product, @PathVariable(name = "storeId") Long storeId) {
         return productDomainService
-                .save(productApiMapper.mapToDomain(product));
+                .save(productApiMapper.mapToDomain(product), storeId);
     }
 }

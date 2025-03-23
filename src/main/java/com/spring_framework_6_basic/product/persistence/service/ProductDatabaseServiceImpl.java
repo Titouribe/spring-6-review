@@ -22,8 +22,8 @@ public class ProductDatabaseServiceImpl implements ProductDatabaseService {
     }
 
     @Override
-    public Page<Product> findAll(Pageable pageable) {
-        return productRepository.findAll(pageable)
+    public Page<Product> findAllByStoreId(Pageable pageable, Long storeId) {
+        return productRepository.findAllByStoreId(pageable, storeId)
                 .map(productDomainMapper::mapToDomain);
     }
 

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ProductDomainService {
 
-    Page<Product> findAll(Pageable pageable);
+    Page<Product> findAll(Pageable pageable, Long storeId);
 
-    Product save(Product product);
+    Product save(Product product, Long storeId);
 }
