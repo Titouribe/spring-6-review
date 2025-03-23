@@ -18,6 +18,7 @@ public class ProductEntity {
     private String name;
 
     @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "store_id")
     private StoreEntity store;
 
     public ProductEntity() {
